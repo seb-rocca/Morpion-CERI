@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+
+<AnchorPane minHeight="500.0" minWidth="833.0" prefHeight="400.0" prefWidth="0.0" style="-fx-background-color: rgba(179, 179, 179, 0.85);" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.view.WinController">
+   <children>
+      <Button layoutX="220.0" layoutY="223.0" mnemonicParsing="false" onMouseClicked="#jouerEncore" prefWidth="127.0" text="Rejouer">
+         <font>
+            <Font size="25.0" />
+         </font>
+      </Button>
+      <Button layoutX="477.0" layoutY="223.0" mnemonicParsing="false" onMouseClicked="#retourMenu" prefHeight="45.0" prefWidth="118.0" text="Menu">
+         <font>
+            <Font size="25.0" />
+         </font>
+      </Button>
+      <Text fx:id="resultText" layoutX="69.0" layoutY="160.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-weight: bold;" text="Text" textAlignment="CENTER" wrappingWidth="696.0">
+         <font>
+            <Font size="45.0" />
+         </font>
+      </Text>
+   </children>
+</AnchorPane>
