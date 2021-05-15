@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+
+<AnchorPane minHeight="500.0" minWidth="833.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.view.DescriptionController">
+   <children>
+      <Button layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onMouseClicked="#retourMenu" text="Retour">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Button>
+      <Text layoutX="322.0" layoutY="73.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-weight: bold;" text="Qui sommes-nous ? " underline="true">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Text>
+      <Text layoutX="194.0" layoutY="320.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nous avons fait ce projet sur demande d'un professeur et nous en avons profité de ce projet d'interface graphique pour toucher en surface le domaine de l'intelligence artificielle." wrappingWidth="455.13671875">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Text>
+      <Text layoutX="201.0" layoutY="116.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Sebastien Rocca, en 3ème année d'informatique en CMI à l'Avignon Université, je possède le statut d'étudiant entrepreneur pour essayer de monter ma propre entreprise." wrappingWidth="442.83203125">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Text>
+      <Text layoutX="201.0" layoutY="233.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Guillaume Bonenfant, en 3ème année d'informatique en CMI à l'Avignon Université tout comme Sébastien, je suis passionné par tout ce qui touche au Japon." wrappingWidth="442.83203125">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Text>
+   </children>
+</AnchorPane>

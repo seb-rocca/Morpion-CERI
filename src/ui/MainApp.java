@@ -101,8 +101,8 @@ public class MainApp extends Application {
 
 
 	 public void showRulesOverview()
-	 {
-	 	try
+	{
+		try
 		{
 			FXMLLoader loader = new FXMLLoader();
 			loader.setLocation(MainApp.class.getResource("view/RulesOverview.fxml"));
@@ -115,9 +115,28 @@ public class MainApp extends Application {
 
 			rootLayout.setCenter(MenuOverview);
 		} catch (IOException e) {
-	 		e.printStackTrace();
+			e.printStackTrace();
 		}
-	 }
+	}
+
+	public void showDescriptionOverview()
+	{
+		try
+		{
+			FXMLLoader loader = new FXMLLoader();
+			loader.setLocation(MainApp.class.getResource("view/DescriptionOverview.fxml"));
+			AnchorPane MenuOverview = (AnchorPane) loader.load();
+			this.lancementStage.setTitle("Morpion - Qui sommes-nous ?");
+
+			// Set person overview into the center of root layout.
+			DescriptionController controller = loader.getController();
+			controller.setMainApp(this);
+
+			rootLayout.setCenter(MenuOverview);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
 
 	 public void showWinOverview(AnchorPane p, String s, boolean withAI)
 	 {

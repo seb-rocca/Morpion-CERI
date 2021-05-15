@@ -62,7 +62,7 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </Text>
-      <Text layoutX="178.0" layoutY="486.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Qui sommes-nous " underline="true">
+      <Text layoutX="178.0" layoutY="486.0" onMouseClicked="#goToDescription" strokeType="OUTSIDE" strokeWidth="0.0" text="Qui sommes-nous " underline="true">
          <font>
             <Font size="17.0" />
          </font>

@@ -1,12 +1,9 @@
 package ui.view;
 
-import ai.MultiLayerPerceptron;
-import ai.SigmoidalTransferFunction;
 import javafx.animation.*;
 import javafx.fxml.FXML;
-import javafx.scene.Group;
-import javafx.scene.control.Button;
-import javafx.scene.control.Labeled;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 
 import javafx.scene.layout.AnchorPane;
@@ -20,8 +17,6 @@ import javafx.scene.text.Text;
 import javafx.util.Duration;
 import ui.MainApp;
 import ui.model.Morpion;
-
-import java.util.ArrayList;
 
 public class PlayController {
 	private MainApp mainApp; 
@@ -67,12 +62,14 @@ public class PlayController {
 		boolean result = false;
 
 		int case_id = Integer.valueOf(((BorderPane)event.getSource()).getId());
-		Circle c = new Circle(20);
-		FadeTransition transition= new FadeTransition(Duration.millis(1000), c);
+		Image img = new Image(getClass().getResource("images/circle.png").toExternalForm());
+		ImageView imView = new ImageView();
+		imView.setImage(img);
+		FadeTransition transition= new FadeTransition(Duration.millis(1000), imView);
 		transition.setFromValue(0);
 		transition.setToValue(1);
 
-		((BorderPane)event.getSource()).setCenter(c);
+		((BorderPane)event.getSource()).setCenter(imView);
 		transition.play();
 		morpion.setCasesValue(case_id, 1);
 		turn++;
@@ -95,14 +92,14 @@ public class PlayController {
 
 
 			morpion.setCasesValue(pion, -1);
-			Text t  = new Text();
-			t.setText("X");
-			t.setFont(new Font(96));
-			FadeTransition transition2 = new FadeTransition(Duration.millis(1000), t);
+			Image img2 = new Image(getClass().getResource("images/cross.png").toExternalForm());
+			ImageView imView2 = new ImageView();
+			imView2.setImage(img2);
+			FadeTransition transition2 = new FadeTransition(Duration.millis(1000), imView2);
 			transition2.setFromValue(0);
 			transition2.setToValue(1);
 			BorderPane p1 = (BorderPane)  gridp.lookup("#" + pion);
-			p1.setCenter(t);
+			p1.setCenter(imView2);
 			transition2.play();
 			result = morpion.verify(pion, -1);
 
@@ -129,12 +126,16 @@ public class PlayController {
 		int case_id = Integer.valueOf(((BorderPane)event.getSource()).getId());
 		if(turn % 2 == 0 && morpion.getCasesValue(case_id) == 0)
 		{
-			Circle c = new Circle(20);
-			FadeTransition transition= new FadeTransition(Duration.millis(1000), c);
+			Image img = new Image(getClass().getResource("images/circle.png").toExternalForm());
+			ImageView imView = new ImageView();
+			imView.setImage(img);
+
+			//Circle c = new Circle(20);
+			FadeTransition transition= new FadeTransition(Duration.millis(1000), imView);
 			transition.setFromValue(0);
 			transition.setToValue(1);
 
-			((BorderPane)event.getSource()).setCenter(c);
+			((BorderPane)event.getSource()).setCenter(imView);
 			transition.play();
 			morpion.setCasesValue(case_id, 1);
 
@@ -147,13 +148,13 @@ public class PlayController {
 		}
 		else if(turn % 2 != 0 && morpion.getCasesValue(case_id) == 0)
 		{
-			Text t  = new Text();
-			t.setText("X");
-			t.setFont(new Font(96));
-			FadeTransition transition= new FadeTransition(Duration.millis(1000), t);
+			Image img = new Image(getClass().getResource("images/cross.png").toExternalForm());
+			ImageView imView = new ImageView();
+			imView.setImage(img);
+			FadeTransition transition= new FadeTransition(Duration.millis(1000), imView);
 			transition.setFromValue(0);
 			transition.setToValue(1);
-			((BorderPane)event.getSource()).setCenter(t) ;;
+			((BorderPane)event.getSource()).setCenter(imView) ;;
 			transition.play();
 			morpion.setCasesValue(case_id, -1);
 

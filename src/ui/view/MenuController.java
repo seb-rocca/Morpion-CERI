@@ -31,10 +31,8 @@ public class MenuController {
 	@FXML
 	public void goToPlayFriend()
 	{
-		mainApp.showPlayOverview(false); 
+		mainApp.showPlayOverview(false);
 	}
-	
-
 
 	@FXML
 	public void goToRules()
@@ -45,8 +43,13 @@ public class MenuController {
 	@FXML
 	public void goToAITraining()
 	{
-		//System.out.println("oui");
 		mainApp.showTrainingOverview();
+	}
+
+	@FXML
+	public void goToDescription()
+	{
+		mainApp.showDescriptionOverview();
 	}
 
 
