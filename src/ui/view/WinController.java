@@ -11,9 +11,14 @@ public class WinController {
 
     private MainApp mainApp;
 
-    public void setMainApp(MainApp mainApp)
+    private boolean withAI;
+
+    public void setMainApp(MainApp mainApp, boolean withAI)
     {
+
         this.mainApp = mainApp;
+        this.withAI = withAI;
+
     }
 
     @FXML
@@ -25,7 +30,7 @@ public class WinController {
     @FXML
     public void jouerEncore()
     {
-        mainApp.showPlayOverview(false);
+        mainApp.showPlayOverview(withAI);
     }
 
     public void sendResult(String s)

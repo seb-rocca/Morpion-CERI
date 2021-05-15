@@ -34,12 +34,7 @@ public class MenuController {
 		mainApp.showPlayOverview(false); 
 	}
 	
-	@FXML
-	public void goToSettings()
-	{
 
-		mainApp.showSettingsOverview();
-	}
 
 	@FXML
 	public void goToRules()
