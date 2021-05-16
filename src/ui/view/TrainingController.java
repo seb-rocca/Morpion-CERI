@@ -31,9 +31,6 @@ public class TrainingController implements Initializable {
 	private ProgressIndicator progressCircle;
 
 	@FXML
-	private Button retourMenu;
-
-	@FXML
 	private Button stop;
 
 	@FXML
@@ -45,17 +42,12 @@ public class TrainingController implements Initializable {
 	private Spinner<Double> epochSpinner;
 
 	@FXML
-	public void lancementApplication()
+	public void lancementApplication() //lorsque l'utilisateur appuie sur le bouton "start" de l'interface
 	{
-		/*
-			Test t = new Test(); 
-			t.main(null);
-		*/
+		lancement.setDisable(true); //on desactive le bouton start lorsqu'on clique sur le bouton start
+		stop.setDisable(false); //on active le bouton stop lorsqu'on clique sur le bouton start
 
-		lancement.setDisable(true);
-		stop.setDisable(false);
-
-		test(9);
+		test(9); //on lance le test
 	}
 	
 	public void setMainApp(MainApp mainApp)
@@ -63,10 +55,10 @@ public class TrainingController implements Initializable {
 		iaDifficulty.setItems(FXCollections.observableArrayList(
 				"Facile",
 				"Difficile"
-		));
-		iaDifficulty.getSelectionModel().selectFirst();
+		)); //pour les valeurs de la combobox
+		iaDifficulty.getSelectionModel().selectFirst(); //on choisi la premiere valeur founie ("Facile")
 		this.mainApp = mainApp;
-		epochSpinner.setValueFactory(new SpinnerValueFactory.DoubleSpinnerValueFactory(10000, 999999999, 1000000));
+		epochSpinner.setValueFactory(new SpinnerValueFactory.DoubleSpinnerValueFactory(10000, 999999999, 1000000)); //on défini les valeurs min et max du spinner
 		task.setButton(lancement);
 
 	}
@@ -78,7 +70,7 @@ public class TrainingController implements Initializable {
 	}
 
 	@FXML
-	public void setDifficulty()
+	public void setDifficulty() //on défini la difficulté du modele
 	{
 		task.setDifficulty(iaDifficulty.getValue());
 		mainApp.setDifficulty("./resources/models/"+ iaDifficulty.getValue() + ".srl");
@@ -86,7 +78,7 @@ public class TrainingController implements Initializable {
 	}
 
 	@FXML
-	public void Stop()
+	public void Stop() //pour stopper l'entrainement
 	{
 
 		task.cancel(true);
@@ -96,22 +88,23 @@ public class TrainingController implements Initializable {
 	}
 
 	@FXML
-	public void retourMenu()
+	public void retourMenu() //pour retourner au menu (arrête l'entrainement au passage)
 	{
 		task.cancel(true);
 		mainApp.showMenuOverview();
 	}
 	
 	
-	public void test(int size){
+	public void test(int size){ //pour effectuer l'entrainement
 
 		try {
 
+			//on relie les élements de l'interface au valeurs du thread pour être actualisées
 			progressBar.progressProperty().bind(task.progressProperty());
 			progressCircle.progressProperty().bind(task.progressProperty());
 			errorDisplay.textProperty().bind(task.messageProperty());
 
-			new Thread(task).start();
+			new Thread(task).start(); //on lance le thread d'entrainement
 			
 		} 
 		catch (Exception e) {

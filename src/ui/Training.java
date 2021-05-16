@@ -15,7 +15,7 @@ import java.util.HashMap;
 
 public class Training extends Task<Integer> {
 	
-	private double epochs = 1000000;
+	private double epochs = 10000000;
 
 	private Button button;
 
@@ -32,30 +32,31 @@ public class Training extends Task<Integer> {
 		this.button = b;
 	}
 	public void setDifficulty(String d) { this.difficulty = d;}
-	
+
+
+	//thread pour entrainer les modèles d'IA
 	@Override
 	protected Integer call() throws Exception {
 
 		int size = 9;
-		double learningRate = 0.1; //0.1
+		double learningRate = 0.01; //0.1
 		int h = 128;
 
-		if(difficulty == "Difficile") {
+		if(difficulty == "Difficile") { //si la difficulté choisie est sur "difficile", on change les paramètres d'entrainement
 			size = 9;
-			learningRate = 0.9;
-			h = 128;
+			learningRate = 0.001;
+			h = 256;
 		}
 
 		System.out.println();
 			System.out.println("START TRAINING ...");
 			System.out.println("epoch : " + epochs);
 			System.out.println("Type d'IA : " + difficulty);
-			//
+
 			int[] layers = new int[]{ size, h, size };
-			//
+
 			double error = 0.0 ;
 			MultiLayerPerceptron net = new MultiLayerPerceptron(layers, learningRate, new SigmoidalTransferFunction());
-			//double epochs = 1000000000;
 
 			System.out.println("---");
 			System.out.println("Load data ...");
@@ -106,9 +107,10 @@ public class Training extends Task<Integer> {
 		System.out.println(inputs[0]+" or "+inputs[1]+" = "+Math.round(output[0])+" ("+output[0]+")");
 
 
-		return 10;
+		return 1;
 	}
-	
+
+	//pour annuler l'entrainement
 	@Override
 	public boolean cancel(boolean mayInterruptIfRunning) 
 	{
@@ -118,7 +120,7 @@ public class Training extends Task<Integer> {
 		return super.cancel(mayInterruptIfRunning);
 	}
 
-	
+	//pour mettre a jour les éléments de l'interface
 	protected void updateMessage(String msg, double workDone, double max)
 	{
 		updateMessage(msg);

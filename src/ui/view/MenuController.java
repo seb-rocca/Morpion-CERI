@@ -22,6 +22,8 @@ public class MenuController {
 		this.mainApp = mainApp; 
 	}
 	
+	//ici on défini les différentes navigations possibles vers les différentes scenes
+
 	@FXML
 	public void goToPlayAlone()
 	{

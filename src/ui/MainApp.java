@@ -16,7 +16,7 @@ public class MainApp extends Application {
 	private Stage lancementStage; 
 	private BorderPane rootLayout;
 
-	private String difficulty = "./resources/models/Facile.srl";
+	private String difficulty = "./resources/models/Facile.srl"; //on défini la difficulté par defaut
 
 	public String getDifficulty() {
 		return difficulty;
@@ -41,13 +41,11 @@ public class MainApp extends Application {
 	
 	 public void initRootLayout() {
 	        try {
-	            // Load root layout from fxml file.
+
 	            FXMLLoader loader = new FXMLLoader();
 	            loader.setLocation(MainApp.class.getResource("view/RootLayout.fxml"));
 	            
 	            rootLayout = (BorderPane) loader.load();
-	            
-	            // Show the scene containing the root layout.
 	            	            
 	            Scene scene = new Scene(rootLayout);
 	            lancementStage.setScene(scene);
@@ -61,31 +59,35 @@ public class MainApp extends Application {
 	public void showMenuOverview()
 	{
 		try {
-
+			//charger le fichier fxml associé
 			FXMLLoader loader = new FXMLLoader();
-			loader.setLocation(MainApp.class.getResource("view/MenuOverview.fxml"));
+			loader.setLocation(MainApp.class.getResource("view/MenuOverview.fxml")); //on charge la vue souhaitée
 			AnchorPane menuOverview = (AnchorPane) loader.load();
 
-			this.lancementStage.setTitle("Morpion - Menu");
 
+			this.lancementStage.setTitle("Morpion - Menu"); //on choisi le titre de la fenêtre
+
+			//on charge le controlleur associé a la vue
 			MenuController controller = loader.getController();
 			controller.setMainApp(this);
 
+			//on met la vue au centre de la scene
 			rootLayout.setCenter(menuOverview);
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
 	}
-	 
+
+	//on fait la même choses que pour la vue "Menu" pour les autres vues...
 	 public void showTrainingOverview() {
 	        try {
-	            // Load person overview.
+
 	            FXMLLoader loader = new FXMLLoader();
 	            loader.setLocation(MainApp.class.getResource("view/TrainingOverview.fxml"));
 	            AnchorPane trainingOverview = (AnchorPane) loader.load();
 
 	            this.lancementStage.setTitle("Morpion - Paramètres l'IA");
-	            // Set person overview into the center of root layout.
+
 	            TrainingController controller = loader.getController();
 	            controller.setMainApp(this); 
 	            
@@ -161,7 +163,6 @@ public class MainApp extends Application {
 
 			  PlayController controller = loader.getController(); 
 			  controller.setMainApp(this, with_ai);
-			  //controller.setAI(with_ai, difficulty);
 			  
 			  rootLayout.setCenter(playOverview); 
 			  
