@@ -35,20 +35,13 @@ public class PlayController {
 
 	private int turn = 0;
 
-	//temporaire
-	private String aiDifficulty;
-
-	public void setMainApp(MainApp mainApp)
+	public void setMainApp(MainApp mainApp, boolean with_AI)
 	{
 		this.mainApp = mainApp;
 		playerTurn.setText("Joueur " + 1);
 		playerTurn.setFill(Color.RED);
-		morpion = new Morpion(gridp, mainApp.getDifficulty());
-	}
-	
-	public void setAI(boolean ai, String file)
-	{
-		this.with_AI = ai;
+		morpion = new Morpion(gridp, mainApp.getDifficulty(), with_AI);
+		this.with_AI = with_AI;
 	}
 
 	@FXML

@@ -19,15 +19,18 @@ public class Morpion {
     private GridPane gridp;
     private ArrayList<Integer> cases = new ArrayList<Integer>();
 
-    public Morpion(GridPane gridp, String file) {
-        System.out.println("Chargement du fichier..." + file);
-        net.load(file);
+    public Morpion(GridPane gridp, String file, boolean with_AI) {
+
+        if(with_AI)
+        {
+            System.out.println("Chargement du fichier..." + file);
+            net.load(file);
+        }
+
         for(int i = 0; i < 9; i++)
         {
             cases.add(0);
-
         }
-
 
         this.gridp = gridp;
     }
@@ -52,7 +55,6 @@ public class Morpion {
     {
         if(case_id/3 == 0 && cases.get(case_id+3) == current_player && cases.get(case_id+6) == current_player )
         {
-            System.out.println("ici1");
             paint(case_id, case_id+3, case_id+6);
             return true;
         }
@@ -117,7 +119,6 @@ public class Morpion {
                 pion = cmpt2;
             }
             cmpt2++;
-            System.out.println(a);
 
         }
 
